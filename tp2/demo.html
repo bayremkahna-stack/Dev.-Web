@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP2 - Gestionnaire de Tâches JavaScript</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+
+        /* Section des statistiques */
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* Barre de progression */
+        .progress-container {
+            margin: 20px 0;
+        }
+
+        .progress-label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 25px;
+            background-color: #e9ecef;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid #dee2e6;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #28a745, #20c997);
+            width: 0%;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        /* Section d'ajout de tâches */
+        .input-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        /* Section de recherche */
+        .search-container {
+            margin-bottom: 20px;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .search-container input:focus {
+            outline: none;
+            border-color: #17a2b8;
+        }
+
+        /* Bouton tout supprimer */
+        .controls-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+
+        #boutonToutSupprimer {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        #boutonToutSupprimer:hover {
+            background-color: #c82333;
+        }
+
+        /* Liste des tâches */
+        #id2 {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Message d'instructions */
+        .instructions {
+            background-color: #e3f2fd;
+            border: 1px solid #bbdefb;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .instructions h3 {
+            margin: 0 0 10px 0;
+            color: #1976d2;
+        }
+
+        .instructions ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 5px;
+        }
+
+        /* Styles pour les éléments highlight de recherche */
+        mark {
+            background-color: #fff3cd;
+            border-radius: 3px;
+            padding: 1px 2px;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .stats-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .input-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🗂️ Gestionnaire de Tâches</h1>
+        
+        <!-- Instructions -->
+        <div class="instructions">
+            <h3>📋 Comment utiliser :</h3>
+            <ul>
+                <li><strong>Ajouter :</strong> Tapez une tâche et appuyez sur Entrée</li>
+                <li><strong>Terminer :</strong> Cliquez sur le bouton vert "Terminer"</li>
+                <li><strong>Reprendre :</strong> Cliquez sur le bouton orange "Reprendre"</li>
+                <li><strong>Supprimer :</strong> Cliquez sur le bouton rouge "Supprimer"</li>
+                <li><strong>Rechercher :</strong> Utilisez le champ de recherche pour filtrer</li>
+                <li><strong>Tout supprimer :</strong> Cliquez sur "Tout supprimer" pour vider la liste</li>
+            </ul>
+        </div>
+
+        <!-- Statistiques -->
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number" id="compteurTotal">0</div>
+                <div class="stat-label">Total</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="compteurTerminees">0</div>
+                <div class="stat-label">Terminées</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="compteurEnCours">0</div>
+                <div class="stat-label">En cours</div>
+            </div>
+        </div>
+
+        <!-- Barre de progression -->
+        <div class="progress-container">
+            <div class="progress-label">Progression</div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="barreProgres">0%</div>
+            </div>
+        </div>
+
+        <!-- Champ d'ajout de tâches -->
+        <div class="input-container">
+            <input type="text" id="id1" placeholder="Entrez une nouvelle tâche..." autofocus>
+        </div>
+
+        <!-- Champ de recherche -->
+        <div class="search-container">
+            <input type="text" id="champRecherche" placeholder="🔍 Rechercher dans les tâches...">
+        </div>
+
+        <!-- Contrôles -->
+        <div class="controls-container">
+            <button id="boutonToutSupprimer">🗑️ Tout supprimer</button>
+        </div>
+
+        <!-- Liste des tâches -->
+        <ul id="id2"></ul>
+
+        <!-- Informations de débogage (optionnel) -->
+        <div style="margin-top: 30px; padding: 15px; background-color: #f8f9fa; border-radius: 5px; border: 1px solid #e9ecef; font-size: 12px; color: #666;">
+            <strong>🛠️ Fonctions de débogage (console) :</strong><br>
+            • <code>debug_afficherTaches()</code> - Afficher toutes les tâches<br>
+            • <code>debug_viderLocalStorage()</code> - Vider le stockage local<br>
+            • <code>obtenirStatistiques()</code> - Obtenir les statistiques
+        </div>
+    </div>
+
+    <script src="tp2.js"></script>
+</body>
+</html>
