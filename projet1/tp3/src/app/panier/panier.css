@@ -1,0 +1,33 @@
+.panier {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 20px 0;
+  background-color: #f9f9f9;
+}
+
+.panier h2 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.messages {
+  margin-top: 15px;
+}
+
+.messages h3 {
+  color: #34495e;
+  font-size: 1.1em;
+}
+
+.messages ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.messages li {
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9em;
+  color: #555;
+}

@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="form-section">
+    <h2>{{ bookToEdit() ? 'Modifier le livre' : 'Ajouter un livre' }}</h2>
+    <app-book-form 
+      [categories]="categories()"
+      [bookToEdit]="bookToEdit()"
+      (bookAdded)="addBook($event)"
+      (bookUpdated)="updateBook($event)"
+      (editCancelled)="cancelEdit()">
+    </app-book-form>
+  </div>
+
+  <div class="list-section">
+    <h2>Liste des livres ({{ books().length }})</h2>
+    <app-book-list 
+      [books]="books()"
+      (bookDeleted)="deleteBook($event)"
+      (bookEdited)="editBook($event)">
+    </app-book-list>
+  </div>
+</div>

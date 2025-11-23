@@ -1,0 +1,64 @@
+<div class="game-container">
+  <!-- Score Display -->
+  <div class="score-panel">
+    <div class="score-item">Score: {{ score }}</div>
+    <div class="score-item">Bonnes: {{ bonnesReponses }}</div>
+    <div class="score-item">Mauvaises: {{ mauvaisesReponses }}</div>
+    <div class="timer" [class.warning]="timeLeft <= 10">
+      Temps: {{ timeLeft }}s
+    </div>
+  </div>
+
+  <!-- Game Over Screen -->
+  <div *ngIf="gameFinished" class="game-over">
+    <h2>Quiz Terminé !</h2>
+    <p>Score Final: {{ score }}</p>
+    <p>Bonnes Réponses: {{ bonnesReponses }}</p>
+    <p>Mauvaises Réponses: {{ mauvaisesReponses }}</p>
+    <button (click)="restartGame()" class="btn-restart">
+      Recommencer
+    </button>
+  </div>
+
+  <!-- Question Display -->
+  <div *ngIf="!gameFinished" class="question-container">
+    <div class="question-header">
+      <h3>Question {{ currentQuestionIndex + 1 }} / {{ questions.length }}</h3>
+    </div>
+    
+    <div class="question-content">
+      <h2>{{ currentQuestion.question }}</h2>
+      
+      <!-- Multiple Choice Options -->
+      <div class="options-container">
+        <button 
+          *ngFor="let option of currentQuestion.options" 
+          (click)="onSelectOption(option, currentQuestion)"
+          [disabled]="currentQuestion.answered || false"
+          [class.correct]="(currentQuestion.answered || false) && option === currentQuestion.reponse"
+          [class.incorrect]="(currentQuestion.answered || false) && option === currentQuestion.selectedOption && option !== currentQuestion.reponse"
+          [class.selected]="currentQuestion.selectedOption === option"
+          class="option-btn">
+          {{ option }}
+        </button>
+      </div>
+
+      <!-- Text Input Alternative -->
+      <div class="text-input-section">
+        <h4>Ou tapez votre réponse:</h4>
+        <input 
+          type="text" 
+          [(ngModel)]="reponseTexte" 
+          [disabled]="currentQuestion.answered || false"
+          placeholder="Votre réponse..."
+          class="text-input">
+        <button 
+          (click)="onSubmitText()" 
+          [disabled]="!reponseTexte || (currentQuestion.answered || false)"
+          class="btn-submit">
+          Valider
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

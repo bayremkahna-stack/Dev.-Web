@@ -1,0 +1,19 @@
+.utilisateur {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.utilisateur input {
+  padding: 8px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px;
+}
+
+.utilisateur label {
+  font-weight: bold;
+  margin-right: 10px;
+}

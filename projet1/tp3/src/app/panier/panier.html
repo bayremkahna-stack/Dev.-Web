@@ -1,0 +1,9 @@
+<div class="panier">
+  <h2>Panier ({{ nombreProduits }} articles)</h2>
+  <div class="messages" *ngIf="messages.length > 0">
+    <h3>Dernières activités:</h3>
+    <ul>
+      <li *ngFor="let message of messages">{{ message }}</li>
+    </ul>
+  </div>
+</div>

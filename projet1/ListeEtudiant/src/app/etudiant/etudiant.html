@@ -1,0 +1,12 @@
+<!--/*<h2>{{etudiant.name}}</h2>
+<div><strong>id : </strong> {{etudiant.id}}</div>
+<div><strong> name : </strong>{{etudiant.name | uppercase}}</div>
+<div> <strong> lastname : </strong>{{etudiant.lastname}}</div>
+<div> <strong> Average: </strong>{{etudiant.average}}</div>-->
+<h2>{{etudiant.name}}</h2>
+<div><strong>id : </strong>{{etudiant.id}}</div>
+<div>
+    <label>  <strong>name :</strong>  
+        <input [(ngModel)] = "etudiant.name" placeholder="name">
+    </label>
+</div>
