@@ -1,0 +1,162 @@
+.welcome-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-title {
+  color: #2c3e50;
+  font-size: 28px;
+  margin-bottom: 30px;
+  font-weight: 300;
+  text-align: center;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 15px;
+}
+
+.section {
+  margin: 30px 0;
+  padding: 25px;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  background: #f8f9fa;
+}
+
+.section h3 {
+  color: #495057;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.login-form {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+  margin: 15px 0;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #495057;
+  font-weight: 500;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #e9ecef;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  margin: 5px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #545b62;
+}
+
+.welcome-message {
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+  color: #155724;
+  padding: 20px;
+  border-radius: 6px;
+  margin: 15px 0;
+  text-align: center;
+}
+
+.welcome-message h3 {
+  margin-top: 0;
+  color: #155724;
+}
+
+.examples {
+  margin-top: 20px;
+}
+
+.example-item {
+  margin: 15px 0;
+  padding: 15px;
+  background: #ffffff;
+  border-left: 4px solid #007bff;
+  border-radius: 0 6px 6px 0;
+}
+
+.example-item p {
+  margin: 5px 0;
+}
+
+.example-item strong {
+  color: #2c3e50;
+}
+
+ul {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 6px;
+  border-left: 4px solid #28a745;
+}
+
+ul li {
+  margin: 10px 0;
+  color: #495057;
+}
+
+code {
+  background: #f8f9fa;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  color: #e83e8c;
+  border: 1px solid #e9ecef;
+}

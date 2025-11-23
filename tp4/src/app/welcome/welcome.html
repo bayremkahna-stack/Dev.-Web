@@ -1,0 +1,49 @@
+<div class="welcome-container">
+  <h2>Activité 1 : Directive *ngIf - Affichage conditionnel</h2>
+
+  <div class="section">
+    <h3>1. Affichage conditionnel simple</h3>
+    
+    <div *ngIf="!isLoggedIn">
+      <p>Vous n'êtes pas connecté.</p>
+      <button (click)="toggleLogin()">Se connecter</button>
+    </div>
+
+    <div *ngIf="isLoggedIn">
+      <p>✅ Bienvenue ! Vous êtes connecté.</p>
+      <button (click)="logout()">Se déconnecter</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>2. Plus d'exemples avec *ngIf</h3>
+    
+    <div>
+      <p><strong>Expression avec propriété:</strong></p>
+      <p *ngIf="requiredName">
+        Le nom requis est : "{{requiredName}}"
+      </p>
+    </div>
+
+    <div>
+      <p><strong>Conditions multiples:</strong></p>
+      <p *ngIf="isLoggedIn && requiredName">
+        📝 Utilisateur {{requiredName}} connecté
+      </p>
+      <p *ngIf="!isLoggedIn">
+        🔄 En attente de connexion...
+      </p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>📚 À retenir sur *ngIf</h3>
+    <ul>
+      <li><code>*ngIf="condition"</code> : Affiche l'élément si la condition est vraie</li>
+      <li><code>*ngIf="!condition"</code> : Affiche l'élément si la condition est fausse</li>
+      <li>L'élément est complètement retiré du DOM quand la condition est fausse</li>
+      <li>Peut être utilisé avec des expressions complexes</li>
+      <li>Différent de <code>[hidden]</code> qui ne fait que masquer visuellement</li>
+    </ul>
+  </div>
+</div>
