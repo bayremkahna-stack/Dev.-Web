@@ -1,0 +1,132 @@
+/* Styles pour les champs de formulaire valides et invalides */
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* barre verte à gauche pour les champs valides requis */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* barre rouge à gauche pour les champs invalides */
+}
+
+/* Style pour les champs non modifiés */
+.ng-pristine {
+  border-left: 5px solid #999; /* barre grise pour les champs non modifiés */
+}
+
+/* Styles supplémentaires pour une meilleure UX */
+.form-control {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 6px 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-control:focus {
+  border-color: #66afe9;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+/* Styles pour les messages d'alerte */
+.alert {
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 4px;
+}
+
+.alert-danger {
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  color: #a94442;
+}
+
+/* Styles pour les boutons */
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.btn-success {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+
+.btn-success:hover {
+  background-color: #449d44;
+  border-color: #398439;
+}
+
+.btn-success:disabled {
+  background-color: #cccccc;
+  border-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.btn-default {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+.btn-default:hover {
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+
+.btn-primary:hover {
+  background-color: #286090;
+  border-color: #204d74;
+}
+
+/* Container */
+.container {
+  padding: 20px;
+}
+
+/* Responsive grid */
+.row {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.row:before,
+.row:after {
+  content: " ";
+  display: table;
+}
+
+.row:after {
+  clear: both;
+}
+
+[class*="col-"] {
+  float: left;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.col-xs-3 {
+  width: 25%;
+}
+
+.col-xs-9 {
+  width: 75%;
+}

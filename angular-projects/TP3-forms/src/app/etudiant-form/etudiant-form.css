@@ -1,0 +1,44 @@
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.btn {
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.alert-info {
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+  color: #31708f;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.row {
+  margin-bottom: 10px;
+}
+
+.col-xs-3 {
+  font-weight: bold;
+  display: inline-block;
+  width: 30%;
+}
+
+.col-xs-9 {
+  display: inline-block;
+  width: 65%;
+}

@@ -1,0 +1,68 @@
+<div class="app-container">
+  <header>
+    <h1>{{ title }}</h1>
+    <nav class="nav-buttons">
+      <button class="nav-btn" [class.active]="!afficherQuiz" (click)="afficherQuiz = false">
+        🛒 Gestion Produits
+      </button>
+      <button class="nav-btn" [class.active]="afficherQuiz" (click)="afficherQuiz = true">
+        🎮 Jeu de Quiz
+      </button>
+    </nav>
+  </header>
+  
+  <main>
+    <!-- Section Gestion des Produits (Activités 1-8) -->
+    <div *ngIf="!afficherQuiz" class="section-produits">
+      <h2 class="section-title">📦 Activités Pratiques - Data Binding</h2>
+      
+      <app-bienvenue></app-bienvenue>
+      
+      <app-utilisateur></app-utilisateur>
+      
+      <div class="produits-container">
+        <app-produit 
+          [nomProduit]="'BMW Série 3'"
+          [imageUrl]="'assets/images/voit1.jpeg'"
+          [prix]="45000"
+          (produitAjoute)="gererAjoutAuPanier($event)">
+        </app-produit>
+        
+        <app-produit 
+          [nomProduit]="'Mercedes Classe C'"
+          [imageUrl]="'assets/images/voit2.jpeg'"
+          [prix]="52000"
+          (produitAjoute)="gererAjoutAuPanier($event)">
+        </app-produit>
+        
+        <app-produit 
+          [nomProduit]="'Audi A4'"
+          [imageUrl]="'assets/images/voit3.jpeg'"
+          [prix]="48000"
+          (produitAjoute)="gererAjoutAuPanier($event)">
+        </app-produit>
+      </div>
+      
+      <app-panier 
+        [nombreProduits]="nombreProduitsAjoutes" 
+        [messages]="messagesPanier">
+      </app-panier>
+    </div>
+
+    <!-- Section Jeu de Quiz (Projet Principal) -->
+    <div *ngIf="afficherQuiz" class="section-quiz">
+      <h2 class="section-title">🎮 Projet - Jeu de Quiz Interactif</h2>
+      
+      <!-- Écran d'accueil du quiz -->
+      <app-home 
+        *ngIf="!quizDemarre"
+        (demarrerQuiz)="quizDemarre = true">
+      </app-home>
+      
+      <!-- Jeu en cours -->
+      <app-game *ngIf="quizDemarre"></app-game>
+    </div>
+  </main>
+  
+  <router-outlet></router-outlet>
+</div>

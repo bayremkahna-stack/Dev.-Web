@@ -1,0 +1,23 @@
+<div class="score-container">
+  <div class="score-board">
+    <div class="score-item main-score">
+      <span class="label">Score Total</span>
+      <span class="value">{{ score }}</span>
+    </div>
+    
+    <div class="score-item bonnes">
+      <span class="label">✅ Bonnes</span>
+      <span class="value">{{ bonnesReponses }}</span>
+    </div>
+    
+    <div class="score-item mauvaises">
+      <span class="label">❌ Mauvaises</span>
+      <span class="value">{{ mauvaisesReponses }}</span>
+    </div>
+    
+    <div class="score-item chrono" [style.color]="chronoCouleur">
+      <span class="label">⏱️ Temps</span>
+      <span class="value">{{ tempsRestant }}s</span>
+    </div>
+  </div>
+</div>

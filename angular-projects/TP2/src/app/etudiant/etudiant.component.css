@@ -1,0 +1,113 @@
+.etudiant-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  color: #1976d2;
+  border-bottom: 2px solid #1976d2;
+  padding-bottom: 10px;
+}
+
+h3 {
+  color: #424242;
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+.etudiant-details {
+  background-color: #f5f5f5;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 15px 0;
+  border-left: 4px solid #1976d2;
+}
+
+.etudiant-details div {
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+.form-section {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #e3f2fd;
+  border-radius: 5px;
+}
+
+.form-section label {
+  display: block;
+  margin: 10px 0;
+}
+
+.form-section input {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #1976d2;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 300px;
+  margin-top: 8px;
+}
+
+.form-section input:focus {
+  outline: none;
+  border-color: #0d47a1;
+  box-shadow: 0 0 5px rgba(25, 118, 210, 0.5);
+}
+
+.table-section {
+  margin: 20px 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+th {
+  background-color: #1976d2;
+  color: white;
+  padding: 12px;
+  text-align: left;
+  font-weight: bold;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.pipes-demo {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #fff3e0;
+  border-radius: 5px;
+  border-left: 4px solid #ff9800;
+}
+
+.pipe-example {
+  margin: 10px 0;
+  padding: 8px;
+  background-color: white;
+  border-radius: 3px;
+  font-size: 15px;
+}
+
+.pipe-example strong {
+  color: #e65100;
+  min-width: 150px;
+  display: inline-block;
+}

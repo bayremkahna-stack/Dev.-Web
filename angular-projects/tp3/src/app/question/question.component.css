@@ -1,0 +1,31 @@
+.question-component {
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  margin: 15px 0;
+}
+
+.question-component h3 {
+  font-size: 1.4em;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option-item {
+  padding: 12px 20px;
+  background: white;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.option-item:hover {
+  border-color: #667eea;
+  transform: translateX(5px);
+}

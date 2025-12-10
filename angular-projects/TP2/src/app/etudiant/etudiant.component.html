@@ -1,0 +1,77 @@
+<div class="etudiant-container">
+  <!-- Affichage principal avec pipe uppercase -->
+  <h2>{{ etudiant.name | uppercase }}</h2>
+  
+  <!-- Informations de base -->
+  <div class="etudiant-details">
+    <div><strong>ID:</strong> {{ etudiant.id }}</div>
+    <div><strong>Nom:</strong> {{ etudiant.name }}</div>
+    <div><strong>Prénom:</strong> {{ etudiant.lastname }}</div>
+    <div><strong>Classe:</strong> {{ etudiant.classe }}</div>
+  </div>
+
+  <!-- Liaison bidirectionnelle avec ngModel -->
+  <div class="form-section">
+    <label>
+      <strong>Modifier le nom:</strong>
+      <input [(ngModel)]="etudiant.name" placeholder="name" />
+    </label>
+  </div>
+
+  <!-- Tableau avec les informations détaillées -->
+  <div class="table-section">
+    <h3>Informations détaillées de l'étudiant</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Champ</th>
+          <th>Valeur</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ID</td>
+          <td>{{ etudiant.id }}</td>
+        </tr>
+        <tr>
+          <td>Nom complet</td>
+          <td>{{ etudiant.name }} {{ etudiant.lastname }}</td>
+        </tr>
+        <tr>
+          <td>Classe</td>
+          <td>{{ etudiant.classe }}</td>
+        </tr>
+        <tr>
+          <td>Moyenne</td>
+          <td>{{ etudiant.average }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Démonstration des pipes Angular -->
+  <div class="pipes-demo">
+    <h3>Démonstration des Pipes Angular</h3>
+    <div class="pipe-example">
+      <strong>Uppercase:</strong> {{ etudiant.name | uppercase }}
+    </div>
+    <div class="pipe-example">
+      <strong>Lowercase:</strong> {{ etudiant.name | lowercase }}
+    </div>
+    <div class="pipe-example">
+      <strong>Date (fullDate):</strong> {{ dateAujourdhui | date:'fullDate' }}
+    </div>
+    <div class="pipe-example">
+      <strong>Date (short):</strong> {{ dateAujourdhui | date:'short' }}
+    </div>
+    <div class="pipe-example">
+      <strong>Currency (EUR):</strong> {{ prixProduit | currency:'EUR':'symbol' }}
+    </div>
+    <div class="pipe-example">
+      <strong>Percent:</strong> {{ pourcentageReussite | percent }}
+    </div>
+    <div class="pipe-example">
+      <strong>Percent (2 décimales):</strong> {{ pourcentageReussite | percent:'1.2-2' }}
+    </div>
+  </div>
+</div>

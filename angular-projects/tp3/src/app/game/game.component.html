@@ -1,0 +1,96 @@
+<div class="game-container" *ngIf="!jeuTermine">
+  <!-- Défi 2: Affichage en temps réel des bonnes/mauvaises réponses -->
+  <app-score 
+    [score]="score" 
+    [bonnesReponses]="bonnesReponses" 
+    [mauvaisesReponses]="mauvaisesReponses"
+    [tempsRestant]="tempsRestant">
+  </app-score>
+
+  <!-- Progression du quiz -->
+  <div class="progression">
+    <p>Question {{ questionActuelle + 1 }} / {{ questions.length }}</p>
+    <div class="progress-bar">
+      <div class="progress-fill" [style.width.%]="((questionActuelle + 1) / questions.length) * 100"></div>
+    </div>
+  </div>
+
+  <!-- Affichage de la question actuelle -->
+  <div class="question-container" *ngIf="getCurrentQuestion()">
+    <h2>{{ getCurrentQuestion().question }}</h2>
+
+    <!-- Options de réponse avec boutons -->
+    <div class="options-container">
+      <button 
+        *ngFor="let option of getCurrentQuestion().options"
+        class="option-btn"
+        [ngClass]="{
+          'correct': isCorrectOption(option, getCurrentQuestion()),
+          'wrong': isWrongOption(option, getCurrentQuestion()),
+          'disabled': getCurrentQuestion().repondu
+        }"
+        (click)="onSelectOption(option, getCurrentQuestion())"
+        [disabled]="getCurrentQuestion().repondu">
+        {{ option }}
+      </button>
+    </div>
+
+    <!-- Two-Way Data Binding: Champ de saisie directe (optionnel) -->
+    <div class="direct-answer" *ngIf="!getCurrentQuestion().repondu">
+      <h3>Ou tapez votre réponse directement :</h3>
+      <div class="input-group">
+        <input 
+          type="text" 
+          [(ngModel)]="reponseSaisie" 
+          placeholder="Entrez votre réponse..."
+          (keyup.enter)="validerReponseSaisie(getCurrentQuestion())">
+        <button 
+          class="btn-valider" 
+          (click)="validerReponseSaisie(getCurrentQuestion())"
+          [disabled]="!reponseSaisie">
+          Valider
+        </button>
+      </div>
+      <p class="hint">Valeur actuelle: {{ reponseSaisie }}</p>
+    </div>
+
+    <!-- Message après réponse -->
+    <div class="feedback" *ngIf="getCurrentQuestion().repondu">
+      <p *ngIf="getCurrentQuestion().reponseChoisie === getCurrentQuestion().reponse" class="correct-msg">
+        ✅ Correct ! Bonne réponse !
+      </p>
+      <p *ngIf="getCurrentQuestion().reponseChoisie !== getCurrentQuestion().reponse" class="wrong-msg">
+        ❌ Incorrect ! La bonne réponse était: {{ getCurrentQuestion().reponse }}
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Écran de fin de jeu -->
+<div class="game-over" *ngIf="jeuTermine">
+  <h1>🎉 Quiz Terminé !</h1>
+  
+  <div class="final-score">
+    <h2>Votre Score Final</h2>
+    <div class="score-display">{{ score }} points</div>
+    
+    <div class="stats">
+      <div class="stat-item">
+        <span class="stat-label">✅ Bonnes réponses:</span>
+        <span class="stat-value">{{ bonnesReponses }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">❌ Mauvaises réponses:</span>
+        <span class="stat-value">{{ mauvaisesReponses }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">📊 Taux de réussite:</span>
+        <span class="stat-value">{{ (bonnesReponses / questions.length * 100).toFixed(0) }}%</span>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn-recommencer" (click)="recommencer()">
+    🔄 Recommencer le Quiz
+  </button>
+</div>
